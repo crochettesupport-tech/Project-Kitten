@@ -1,0 +1,40 @@
+/* ==========================================================================
+   Design tokens — Twisha’s Garden
+   Original palette first, semantic roles second. To try a different
+   combination, change which palette variable a role points to (section 2);
+   no component needs to be touched.
+   ========================================================================== */
+
+:root {
+  /* 1. Original palette (Star 1 concept board) ---------------------------- */
+  --botanical: #52634a;   /* Deep Botanical / Forest */
+  --sage: #87906c;        /* Sage */
+  --light-sage: #aeb99a;  /* Light Sage */
+  --blush: #eccfc4;       /* Blush */
+  --peach: #e7c2b2;       /* Peach */
+  --cream: #f3ede5;       /* Warm Cream */
+  --ivory: #faf8f3;       /* Paper / Ivory */
+  --brown: #75604f;       /* Brown */
+  --ink: #394036;         /* Dark Text */
+
+  /* 2. Semantic roles (what the components actually use) ------------------ */
+  --bg: var(--ivory);
+  --bg-edge: var(--cream);          /* soft vignette at the paper edges */
+  --text: var(--ink);
+  --text-soft: var(--brown);        /* handwritten accents, small labels */
+  --accent: var(--botanical);       /* button, focus ring */
+  --accent-soft: var(--sage);       /* hairlines, botanical line art */
+  --accent-faint: var(--light-sage);
+  --warm: var(--blush);             /* blossoms, soft highlights */
+  --warm-deep: var(--peach);
+  --seed: var(--brown);
+
+  /* 3. Type ---------------------------------------------------------------- */
+  --font-serif: "Cormorant Garamond", "EB Garamond", Garamond, "Iowan Old Style",
+    "Palatino Linotype", Georgia, serif;
+  --font-hand: "Caveat", "Segoe Script", "Bradley Hand", "Brush Script MT", cursive;
+
+  /* 4. Motion -------------------------------------------------------------- */
+  --ease-settle: cubic-bezier(0.22, 0.7, 0.24, 1);
+  --ease-soft: cubic-bezier(0.4, 0, 0.2, 1);
+}
