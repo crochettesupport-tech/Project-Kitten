@@ -1,0 +1,188 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>Twisha’s Garden</title>
+  <meta name="theme-color" content="#FAF8F3">
+  <meta name="description" content="A little garden, made for Twisha.">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Cpath d='M16 29V12' stroke='%2387906C' stroke-width='2' stroke-linecap='round' fill='none'/%3E%3Cpath d='M16 18C9 18 5 13 5 7c7 0 11 4 11 11Z' fill='%23AEB99A' stroke='%2352634A' stroke-width='1.4' stroke-linejoin='round'/%3E%3Cpath d='M16 13c5 0 9-3 10-9-6 0-10 3-10 9Z' fill='%2387906C' stroke='%2352634A' stroke-width='1.4' stroke-linejoin='round'/%3E%3C/svg%3E">
+
+  <!-- Fail-safe: the intro only takes over the page if its scripts really start.
+       If they don't (blocked, offline, 404), the app is shown instead of a blank screen. -->
+  <script>
+    document.documentElement.classList.add('js');
+    window.setTimeout(function () {
+      if (!(window.TwishaIntro && window.TwishaIntro.started)) {
+        document.documentElement.classList.remove('js');
+      }
+    }, 6000);
+  </script>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Caveat:wght@400;500&family=Pinyon+Script&family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&display=swap">
+
+  <link rel="stylesheet" href="css/tokens.css">
+  <link rel="stylesheet" href="css/base.css">
+  <link rel="stylesheet" href="css/intro.css">
+  <link rel="stylesheet" href="css/loader.css">
+  <link rel="stylesheet" href="css/dashboard.css">
+</head>
+
+<body class="is-intro">
+  <noscript>
+    <style>.intro, .loader { display: none !important; }</style>
+  </noscript>
+
+  <!-- Shared botanical line art (decorative) -->
+  <svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false">
+    <defs>
+      <symbol id="sprig" viewBox="0 0 160 260">
+        <g fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M80 258C74 205 90 150 80 96 74 62 82 34 84 8"/>
+          <path d="M78 214C58 212 42 198 38 178c22 0 38 14 40 36Z" fill="currentColor" fill-opacity=".16"/>
+          <path d="M80 190c20-4 36-20 40-40-22 2-37 16-40 40Z" fill="currentColor" fill-opacity=".1"/>
+          <path d="M80 150c-18-4-32-18-34-36 18 2 32 16 34 36Z" fill="currentColor" fill-opacity=".16"/>
+          <path d="M82 120c16-4 28-18 30-34-18 2-29 16-30 34Z" fill="currentColor" fill-opacity=".1"/>
+          <path d="M80 92C68 88 58 78 58 64c12 2 21 12 22 28Z" fill="currentColor" fill-opacity=".16"/>
+          <path d="M82 62c10-4 18-14 18-26-10 2-17 12-18 26Z" fill="currentColor" fill-opacity=".1"/>
+        </g>
+        <g stroke="none">
+          <circle cx="120" cy="148" r="3.2" style="fill:var(--warm-deep)"/>
+          <circle cx="38" cy="176" r="2.6" style="fill:var(--warm)"/>
+          <circle cx="84" cy="8" r="3.4" style="fill:var(--warm-deep)"/>
+        </g>
+      </symbol>
+
+      <!-- line icons for the star rail and buttons -->
+      <symbol id="i-leafmark" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22V9"/><path d="M12 15C6 15 3 11.5 3 6c6 0 9 3.5 9 9Z" fill="currentColor" fill-opacity=".14"/><path d="M12 12c4.5 0 8-2.5 8-8-4.5 0-8 2.5-8 8Z" fill="currentColor" fill-opacity=".08"/></g></symbol>
+      <symbol id="i-sprout" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21v-9"/><path d="M12 12c0-4-3-6-7-6 0 4 3 6 7 6Z"/><path d="M12 14c0-3 2.5-5 6-5 0 3-2.5 5-6 5Z"/></g></symbol>
+      <symbol id="i-book" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M3 5.5c3-1 6-1 9 1v13c-3-2-6-2-9-1v-13Z"/><path d="M21 5.5c-3-1-6-1-9 1v13c3-2 6-2 9-1v-13Z"/></g></symbol>
+      <symbol id="i-feather" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 4c-7 0-12 4-12 11v2"/><path d="M20 4c0 7-4 11-11 11"/><path d="M4 21l5-6"/><path d="M12 11h4"/></g></symbol>
+      <symbol id="i-photo" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="3.5" y="4.5" width="17" height="15" rx="2"/><circle cx="9" cy="10" r="1.4"/><path d="M4 18l5-5 4 4 3-3 4 4"/></g></symbol>
+      <symbol id="i-music" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18V6l10-2v12"/><circle cx="6.5" cy="18" r="2.5"/><circle cx="16.5" cy="16" r="2.5"/></g></symbol>
+      <symbol id="i-lock" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="11" width="14" height="9" rx="2.2"/><path d="M8 11V8a4 4 0 0 1 8 0v3"/></g></symbol>
+      <symbol id="i-arrow" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="M13 6l6 6-6 6"/></g></symbol>
+    </defs>
+  </svg>
+
+  <!-- ====================================================================
+       THE APP — dashboard + Star 1 screen
+       Mounted straight away (hidden + inert) so it can finish loading its
+       artwork while the message is being read. It tells the loading screen
+       when it is truly ready (see js/app/dashboard.js).
+       ==================================================================== -->
+  <main id="app" class="app" tabindex="-1">
+    <div class="garden" id="garden-app" data-screen="dashboard">
+
+      <!-- Environment: one flattened image for now. Kept in its own layer so a
+           separate character / hair layer can be stacked on top later. -->
+      <div class="scene" id="scene">
+        <img class="scene__img" id="scene-img" src="assets/garden-bg.jpg" width="1344" height="698" decoding="async"
+             alt="A girl with long dark hair and headphones sits on a stone ledge in a flowering garden, looking out over a lake and mountains at sunset.">
+      </div>
+
+      <!-- Star rail (wide landscape screens only; built from js/app/stars.js) -->
+      <nav class="rail" id="rail" aria-label="Stars">
+        <a class="rail__brand" href="#/" aria-label="Twisha’s Garden — home"><svg aria-hidden="true" focusable="false"><use href="#i-leafmark"/></svg></a>
+        <ul class="rail__list" id="rail-list"></ul>
+        <svg class="rail__sprig" aria-hidden="true" focusable="false"><use href="#i-leafmark"/></svg>
+      </nav>
+
+      <div class="shell">
+        <header class="top">
+          <a class="brand" href="#/">
+            <svg class="brand__mark" aria-hidden="true" focusable="false"><use href="#i-leafmark"/></svg>
+            <span class="brand__name">Twisha’s Garden</span>
+          </a>
+          <nav class="top__nav" aria-label="Main">
+            <a href="#/" data-route="dashboard">Home</a>
+            <a href="#/garden" data-route="garden">Garden</a>
+          </nav>
+        </header>
+
+        <!-- Screen 1: dashboard -->
+        <section class="screen screen--dashboard" id="screen-dashboard" aria-labelledby="welcome-title">
+          <div class="hero">
+            <p class="hero__mark" aria-hidden="true"><svg><use href="#i-leafmark"/></svg><span></span></p>
+            <h1 class="hero__title" id="welcome-title" tabindex="-1">
+              <span class="hero__hello">Welcome Home,</span>
+              <span class="hero__name">Twisha</span>
+            </h1>
+            <p class="hero__sub">A quiet space for a softer mind,<br> a kinder heart, and a more beautiful you.</p>
+          </div>
+
+          <div class="dock">
+            <p class="note" id="note" role="status" aria-live="polite"></p>
+            <nav class="stars" id="stars" aria-label="Stars"></nav>
+            <p class="tagline" aria-hidden="true"><svg><use href="#i-leafmark"/></svg><span>Good things grow here</span></p>
+          </div>
+        </section>
+
+        <!-- Screen 2: Star 1 — the garden. #garden-mount is where the real garden
+             experience attaches (window.TwishaGarden.mountGarden). -->
+        <section class="screen screen--garden" id="screen-garden" aria-labelledby="garden-title" hidden>
+          <div class="dock">
+            <div class="panel" id="garden-mount">
+              <img class="panel__art" src="assets/stars/star1.png" alt="" width="338" height="360" decoding="async">
+              <p class="panel__eyebrow">Star 1</p>
+              <h2 class="panel__title" id="garden-title" tabindex="-1">The Garden</h2>
+              <p class="panel__text" id="garden-text">Your garden is being planted.<br> This is where it will grow.</p>
+              <a class="quiet-btn" href="#/"><svg class="quiet-btn__arrow" aria-hidden="true" focusable="false"><use href="#i-arrow"/></svg><span>Back to the dashboard</span></a>
+            </div>
+          </div>
+        </section>
+      </div>
+    </div>
+  </main>
+
+  <!-- ====================================================================
+       LOADING SCREEN
+       ==================================================================== -->
+  <section id="loader" class="loader paper" aria-label="Loading" hidden>
+    <div class="loader__inner">
+      <div class="loader__graphic" id="loader-graphic"></div>
+      <p class="loader__label" role="status">just a moment…</p>
+    </div>
+  </section>
+
+  <!-- ====================================================================
+       INTRO — a letter, one line at a time
+       ==================================================================== -->
+  <section id="intro" class="intro paper" aria-label="A message for Twisha">
+    <svg class="sprig sprig--tl" aria-hidden="true" focusable="false"><use href="#sprig"/></svg>
+    <svg class="sprig sprig--br" aria-hidden="true" focusable="false"><use href="#sprig"/></svg>
+
+    <header class="intro__head">
+      <p class="hand" id="intro-head" aria-hidden="true"></p>
+    </header>
+
+    <div class="stage">
+      <div class="letter" id="letter" aria-hidden="true"></div>
+      <svg class="flourish" viewBox="0 0 160 24" aria-hidden="true" focusable="false">
+        <path class="flourish__line" d="M6 14C34 6 54 20 80 12s48-8 74 0"/>
+        <path class="flourish__leaf" d="M80 12c-2-6 2-10 7-11 1 6-2 10-7 11Z"/>
+      </svg>
+      <p class="sr-only" id="intro-live" aria-live="polite"></p>
+    </div>
+
+    <footer class="intro__foot">
+      <ol class="progress" id="progress" aria-hidden="true"></ol>
+      <button type="button" class="next" id="next" aria-disabled="true">
+        <span class="next__label">Next</span><span class="next__arrow" aria-hidden="true">→</span>
+      </button>
+    </footer>
+  </section>
+
+  <!-- Order matters: config → ready contract → loader graphic → intro → boot → app -->
+  <script src="js/config.js"></script>
+  <script src="js/app-ready.js"></script>
+  <script src="js/loader-graphic.js"></script>
+  <script src="js/intro.js"></script>
+  <script src="js/main.js"></script>
+  <script src="js/app/stars.js"></script>
+  <script src="js/app/router.js"></script>
+  <script src="js/app/dashboard.js"></script>
+</body>
+</html>
